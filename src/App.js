@@ -17,7 +17,7 @@ function App() {
         >
           Learn React
         </a>
-        <Link to={Login}>Login</Link>
+        <Login />
       </header>
     </div>
   )
