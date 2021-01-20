@@ -26,8 +26,9 @@ const Routes = () => (
     <Fragment>
       <Switch>
         <Route exact path="/" component={Login} />
-        <PrivateRoute path="/app" component={App} />
+        <PrivateRoute exact path="/app" component={App} />
       </Switch>
+      <ModalContainer />
     </Fragment>
   </BrowserRouter>
 )

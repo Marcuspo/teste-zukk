@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Link, Router } from "react-router-dom"
+import { withRouter } from "react-router-dom"
 
 import api from "../services/api"
 import { login } from "../services/auth"
@@ -48,13 +48,10 @@ class Login extends Component {
           />
           <button type="submit">Entrar</button>
           <hr />
-          <Router>
-            <Link to="/signup">Criar conta</Link>
-          </Router>
         </Form>
       </Container>
     )
   }
 }
 
-export default Login
+export default withRouter(Login)
