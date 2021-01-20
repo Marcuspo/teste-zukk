@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Link, withRouter } from "react-router-dom"
+import { Link, Router } from "react-router-dom"
 
 import api from "../services/api"
 import { login } from "../services/auth"
@@ -48,7 +48,9 @@ class Login extends Component {
           />
           <button type="submit">Entrar</button>
           <hr />
-          <Link to="/signup">Criar conta</Link>
+          <Router>
+            <Link to="/signup">Criar conta</Link>
+          </Router>
         </Form>
       </Container>
     )

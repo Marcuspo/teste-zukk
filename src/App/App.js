@@ -1,7 +1,3 @@
-import { Link } from "react-router-dom"
-import "./App.css"
-import Login from "./Login/Login"
-
 function App() {
   return (
     <div className="App">
@@ -17,7 +13,6 @@ function App() {
         >
           Learn React
         </a>
-        <Login />
       </header>
     </div>
   )
