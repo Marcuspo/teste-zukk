@@ -7,6 +7,7 @@ import { isAuthenticated } from "./services/auth"
 
 import Login from "./Login/Login"
 import App from "./App/App"
+import Cadastro from "./Cadastro/index"
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -26,6 +27,7 @@ const Routes = () => (
     <Fragment>
       <Switch>
         <Route exact path="/" component={Login} />
+        <Route path="/cadastro" component={Cadastro} />
         <PrivateRoute exact path="/app" component={App} />
       </Switch>
       <ModalContainer />
