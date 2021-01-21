@@ -1,65 +1,56 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { FiArrowLeft } from "react-icons/fi"
-import api from "../../../services/api"
-import Modal from "../../../components/Modal"
-
+import api from "../services/api"
 import "./styles.css"
 
 export default function ClienteNew() {
   const [nome, setNome] = useState("")
-  const [endereco, setEndereco] = useState("")
+  const [cep, setCep] = useState("")
   const [bairro, setBairro] = useState("")
   const [cidade, setCidade] = useState("")
   const [uf, setUf] = useState("")
   const [telefone, setTelefone] = useState("")
   const [email, setEmail] = useState("")
 
-  const [modalVisible, setModalVisible] = useState(false)
-  const [mensagemModal, setmensagemModal] = useState("")
-
   async function newCliente(e) {
     e.preventDefault()
 
     if (nome === null || nome === "") {
-      setmensagemModal("Preencha o nome do Cliente")
-      setModalVisible(true)
+      alert("Preencha o nome do Cliente")
+
       return
     }
-    if (endereco === null || endereco === "") {
-      setmensagemModal("Preencha o endereço corretamente")
-      setModalVisible(true)
+    if (cep === null || cep === "") {
+      alert("Preencha o endereço corretamente")
+
       return
     }
     if (bairro === null || bairro === "") {
-      setmensagemModal("Preencha o endereço corretamente")
-      setModalVisible(true)
+      alert("Preencha o endereço corretamente")
+
       return
     }
     if (cidade === null || cidade === "") {
-      setmensagemModal("Preencha o endereço corretamente")
-      setModalVisible(true)
+      alert("Preencha o endereço corretamente")
       return
     }
     if (uf === null || uf === "") {
-      setmensagemModal("Preencha o endereço corretamente")
-      setModalVisible(true)
+      alert("Preencha o endereço corretamente")
       return
     }
     if (telefone === null || telefone === "") {
-      setmensagemModal("Preencha o endereço corretamente")
-      setModalVisible(true)
+      alert("Preencha o endereço corretamente")
       return
     }
     if (email === null || email === "") {
-      setmensagemModal("Preencha o endereço corretamente")
-      setModalVisible(true)
+      alert("Preencha o endereço corretamente")
       return
     }
 
     const data = {
       nome,
-      endereco,
+      cep,
       bairro,
       cidade,
       uf,
@@ -68,8 +59,7 @@ export default function ClienteNew() {
     }
 
     try {
-      await api.post("clientes", data, {})
-
+      await api.post("clientes", data)
       this.props.history.push("/app")
     } catch (error) {
       alert("Erro ao cadastrar Cliente")
@@ -78,16 +68,12 @@ export default function ClienteNew() {
 
   return (
     <div>
-      {modalVisible ? (
-        <Modal onClose={() => setModalVisible(false)} title={mensagemModal} />
-      ) : null}
       <div className="new-vaga-container">
         <div className="conteiner">
           <section>
-            <img src={logoImg} alt="Be The Hero" />
             <h1>Cadastrar Cliente</h1>
-            <p>Cadastre o cliente e torneu membro da nossa equipe.</p>
-            <Link className="back-link" to="/clientes">
+            <p>Cadastre o cliente</p>
+            <Link className="back-link" to="/app">
               <FiArrowLeft size={16} color="#E02041" />
               Voltar para Home
             </Link>
@@ -99,10 +85,13 @@ export default function ClienteNew() {
               placeholder="Nome do Cliente"
             />
             <input
-              value={endereco}
-              onChange={(e) => setEndereco(e.target.value)}
-              placeholder="Endereço do Cliente"
+              value={cep}
+              onChange={(e) => setCep(e.target.value)}
+              placeholder="Cep do Cliente"
             />
+            <button className="button-cep" type="submit">
+              Buscar Cep
+            </button>
             <input
               value={bairro}
               onChange={(e) => setBairro(e.target.value)}
