@@ -18,6 +18,11 @@
 
 ## `npm start`
 
+Login para acessar a conta:
+
+admin@admin.com
+1234
+
 Passos que ficaram faltando para conclusão:
 
 - Busca de cep no form de cadastro.
